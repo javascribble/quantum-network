@@ -1,10 +1,10 @@
 {
-    "name": "@javascribble/quantum-websocket",
+    "name": "@javascribble/quantum-network",
     "description": "",
-    "version": "0.4.0",
+    "version": "0.3.0",
     "license": "MIT",
     "dependencies": {
-        "@javascribble/quantum": "^0.4.9"
+        "@javascribble/quantum": "^0.4.19"
     },
     "devDependencies": {
         "live-server": "*"
@@ -14,13 +14,13 @@
         "postversion": "npm publish --access public"
     },
     "main": "./source/main.js",
-    "homepage": "https://github.com/javascribble/quantum-websocket#readme",
+    "homepage": "https://github.com/javascribble/quantum-network#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/javascribble/quantum-websocket.git"
+        "url": "git+https://github.com/javascribble/quantum-network.git"
     },
     "bugs": {
-        "url": "https://github.com/javascribble/quantum-websocket/issues"
+        "url": "https://github.com/javascribble/quantum-network/issues"
     },
     "keywords": [
         "web",
