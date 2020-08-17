@@ -11,8 +11,8 @@ export class Socket extends WebSocket {
         this.binaryType = 'arraybuffer';
         this.#readBuffer = new ArrayBuffer(bufferSize);
         this.#writeBuffer = new ArrayBuffer(bufferSize);
-        this.reader = new ByteReader(this.#readBuffer, new TextDecoder(textEncoding));
-        this.writer = new ByteWriter(this.#writeBuffer, new TextEncoder(textEncoding));
+        this.reader = new ByteReader(new DataView(this.#readBuffer), new TextDecoder(textEncoding));
+        this.writer = new ByteWriter(new DataView(this.#writeBuffer), new TextEncoder(textEncoding));
     }
 
     send() {
