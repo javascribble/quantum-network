@@ -1,3 +1,6 @@
+import { ByteReader } from '../utilities/reader.js';
+import { ByteWriter } from '../utilities/writer.js';
+
 export class Socket extends WebSocket {
     #readBuffer;
     #writeBuffer;
