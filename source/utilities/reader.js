@@ -1,85 +1,84 @@
 export class ByteReader {
+    #arrayBuffer;
     #dataView;
     #decoder;
     #offset;
 
-    constructor(dataView, decoder) {
-        this.#dataView = dataView;
+    constructor(decoder) {
         this.#decoder = decoder;
+    }
+
+    bind(arrayBuffer) {
+        this.#arrayBuffer = arrayBuffer;
+        this.#dataView = new DataView(this.#arrayBuffer);
         this.#offset = 0;
     }
 
-    get offset() {
-        return this.#offset;
-    }
-
-    set offset(value) {
-        this.#offset = value;
-    }
-
-    getInt8() {
+    readInt8() {
         const value = this.#dataView.getInt8(this.#offset);
-        this.#offset += 8;
+        this.#offset += 1;
         return value;
     }
 
-    getInt16() {
+    readInt16() {
         const value = this.#dataView.getInt16(this.#offset);
-        this.#offset += 16;
+        this.#offset += 2;
         return value;
     }
 
-    getInt32() {
+    readInt32() {
         const value = this.#dataView.getInt32(this.#offset);
-        this.#offset += 32;
+        this.#offset += 4;
         return value;
     }
 
-    getBigInt64() {
+    readBigInt64() {
         const value = this.#dataView.getBigInt64(this.#offset);
-        this.#offset += 64;
-        return value;
-    }
-
-    getUint8() {
-        const value = this.#dataView.getUint8(this.#offset);
         this.#offset += 8;
         return value;
     }
 
-    getUint16() {
+    readUint8() {
+        const value = this.#dataView.getUint8(this.#offset);
+        this.#offset += 1;
+        return value;
+    }
+
+    readUint16() {
         const value = this.#dataView.getUint16(this.#offset);
-        this.#offset += 16;
+        this.#offset += 2;
         return value;
     }
 
-    getUint32() {
+    readUint32() {
         const value = this.#dataView.getUint32(this.#offset);
-        this.#offset += 32;
+        this.#offset += 4;
         return value;
     }
 
-    getBigUint64() {
+    readBigUint64() {
         const value = this.#dataView.getBigUint64(this.#offset);
-        this.#offset += 64;
+        this.#offset += 8;
         return value;
     }
 
-    getFloat32() {
+    readFloat32() {
         const value = this.#dataView.getFloat32(this.#offset);
-        this.#offset += 32;
+        this.#offset += 4;
         return value;
     }
 
-    getFloat64() {
+    readFloat64() {
         const value = this.#dataView.getFloat64(this.#offset);
-        this.#offset += 64;
+        this.#offset += 8;
         return value;
     }
 
-    getString() {
-        const length = this.getInt32();
-        const value = this.#decoder.decode(new Uint8Array(this.#dataView.buffer, this.#offset, length))
+    readString() {
+        const length = this.readInt32();
+
+        // TODO: Use decodeFrom once someone figures it out.
+        const value = this.#decoder.decode(new Uint8Array(this.#arrayBuffer, this.#offset, length))
         this.#offset += length;
         return value;
     }
