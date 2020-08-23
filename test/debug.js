@@ -1,19 +1,21 @@
 import '/node_modules/@javascribble/quantum/source/main.js';
-import '/source/main.js';
+import { ByteWriter, ByteReader } from '/source/main.js';
 
 document.body.style.visibility = 'visible';
 
 const size = 1024;
 const encoding = "utf-8";
 
-const arrayBuffer = new ArrayBuffer(size);
-const dataView = new DataView(arrayBuffer);
-const writer = new quantum.ByteWriter(dataView, new TextEncoder(encoding));
-const reader = new quantum.ByteReader(dataView, new TextDecoder(encoding));
+const writer = new ByteWriter(new TextEncoder(encoding));
+const reader = new ByteReader(new TextDecoder(encoding));
 
-writer.setInt32(7);
-writer.setFloat32(1.123124);
-writer.setString("Test string");
-console.log(reader.getInt32());
-console.log(reader.getFloat32());
-console.log(reader.getString());
+const arrayBuffer = new ArrayBuffer(size);
+writer.bind(arrayBuffer);
+reader.bind(arrayBuffer);
+
+writer.writeInt32(7);
+writer.writeFloat32(1.123124);
+writer.writeString("Test string");
+console.log(reader.readInt32());
+console.log(reader.readFloat32());
+console.log(reader.readString());

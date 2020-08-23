@@ -69,7 +69,7 @@ export class ByteWriter {
         this.writeInt32(length);
 
         // TODO: Use encodeInto once it gains browser support.
-        this.#encoder.encode(value).set(new Uint8Array(this.#arrayBuffer, this.#offset, length));
+        new Uint8Array(this.#arrayBuffer, this.#offset, length).set(this.#encoder.encode(value));
         this.#offset += length;
     }
 
