@@ -6,12 +6,31 @@ export class ByteReader {
 
     constructor(decoder) {
         this.#decoder = decoder;
+
+        this.readBoolArray = () => this.readArray(this.readBool.bind(this));
+        this.readInt8 = () => this.readArray(this.readInt8.bind(this));
+        this.readInt16 = () => this.readArray(this.readInt16.bind(this));
+        this.readInt32 = () => this.readArray(this.readInt32.bind(this));
+        this.readBigInt64 = () => this.readArray(this.readBigInt64.bind(this));
+        this.readUint8 = () => this.readArray(this.readUint8.bind(this));
+        this.readUint16 = () => this.readArray(this.readUint16.bind(this));
+        this.readUint32 = () => this.readArray(this.readUint32.bind(this));
+        this.readBigUint64 = () => this.readArray(this.readBigUint64.bind(this));
+        this.readFloat32 = () => this.readArray(this.readFloat32.bind(this));
+        this.readFloat64 = () => this.readArray(this.readFloat64.bind(this));
+        this.readString = () => this.readArray(this.readString.bind(this));
     }
 
     bind(arrayBuffer) {
         this.#arrayBuffer = arrayBuffer;
         this.#dataView = new DataView(this.#arrayBuffer);
         this.#offset = 0;
+    }
+
+    readBool() {
+        const value = this.#dataView.getInt8(this.#offset);
+        this.#offset += 1;
+        return value === 1;
     }
 
     readInt8() {
@@ -81,5 +100,15 @@ export class ByteReader {
         const value = this.#decoder.decode(new Uint8Array(this.#arrayBuffer, this.#offset, length))
         this.#offset += length;
         return value;
+    }
+
+    readArray(delegate) {
+        const array = [];
+        const length = this.readInt32();
+        for (let i = 0; i < length; i++) {
+            array.push(delegate());
+        }
+
+        return array;
     }
 }

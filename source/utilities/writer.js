@@ -6,12 +6,30 @@ export class ByteWriter {
 
     constructor(encoder) {
         this.#encoder = encoder;
+
+        this.writeBoolArray = value => this.writeArray(value, this.writeBool.bind(this));
+        this.writeInt8 = value => this.writeArray(value, this.writeInt8.bind(this));
+        this.writeInt16 = value => this.writeArray(value, this.writeInt16.bind(this));
+        this.writeInt32 = value => this.writeArray(value, this.writeInt32.bind(this));
+        this.writeBigInt64 = value => this.writeArray(value, this.writeBigInt64.bind(this));
+        this.writeUint8 = value => this.writeArray(value, this.writeUint8.bind(this));
+        this.writeUint16 = value => this.writeArray(value, this.writeUint16.bind(this));
+        this.writeUint32 = value => this.writeArray(value, this.writeUint32.bind(this));
+        this.writeBigUint64 = value => this.writeArray(value, this.writeBigUint64.bind(this));
+        this.writeFloat32 = value => this.writeArray(value, this.writeFloat32.bind(this));
+        this.writeFloat64 = value => this.writeArray(value, this.writeFloat64.bind(this));
+        this.writeString = value => this.writeArray(value, this.writeString.bind(this));
     }
 
     bind(arrayBuffer) {
         this.#arrayBuffer = arrayBuffer;
         this.#dataView = new DataView(this.#arrayBuffer);
         this.#offset = 0;
+    }
+
+    writeBool(value) {
+        this.#dataView.setInt8(this.#offset, value ? 1 : 0);
+        this.#offset += 1;
     }
 
     writeInt8(value) {
@@ -34,7 +52,7 @@ export class ByteWriter {
         this.#offset += 8;
     }
 
-    setUint8(value) {
+    writeUint8(value) {
         this.#dataView.setUint8(this.#offset, value);
         this.#offset += 1;
     }
@@ -71,6 +89,14 @@ export class ByteWriter {
         // TODO: Use encodeInto once it gains browser support.
         new Uint8Array(this.#arrayBuffer, this.#offset, length).set(this.#encoder.encode(value));
         this.#offset += length;
+    }
+
+    writeArray(value, delegate) {
+        const length = value.length;
+        this.writeInt32(length);
+        for (let i = 0; i < length; i++) {
+            delegate(value[i]);
+        }
     }
 
     flush() {
