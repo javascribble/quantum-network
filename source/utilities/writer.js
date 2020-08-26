@@ -8,17 +8,17 @@ export class ByteWriter {
         this.#encoder = encoder;
 
         this.writeBoolArray = value => this.writeArray(value, this.writeBool.bind(this));
-        this.writeInt8 = value => this.writeArray(value, this.writeInt8.bind(this));
-        this.writeInt16 = value => this.writeArray(value, this.writeInt16.bind(this));
-        this.writeInt32 = value => this.writeArray(value, this.writeInt32.bind(this));
-        this.writeBigInt64 = value => this.writeArray(value, this.writeBigInt64.bind(this));
-        this.writeUint8 = value => this.writeArray(value, this.writeUint8.bind(this));
-        this.writeUint16 = value => this.writeArray(value, this.writeUint16.bind(this));
-        this.writeUint32 = value => this.writeArray(value, this.writeUint32.bind(this));
-        this.writeBigUint64 = value => this.writeArray(value, this.writeBigUint64.bind(this));
-        this.writeFloat32 = value => this.writeArray(value, this.writeFloat32.bind(this));
-        this.writeFloat64 = value => this.writeArray(value, this.writeFloat64.bind(this));
-        this.writeString = value => this.writeArray(value, this.writeString.bind(this));
+        this.writeInt8Array = value => this.writeArray(value, this.writeInt8.bind(this));
+        this.writeInt16Array = value => this.writeArray(value, this.writeInt16.bind(this));
+        this.writeInt32Array = value => this.writeArray(value, this.writeInt32.bind(this));
+        this.writeBigInt64Array = value => this.writeArray(value, this.writeBigInt64.bind(this));
+        this.writeUint8Array = value => this.writeArray(value, this.writeUint8.bind(this));
+        this.writeUint16Array = value => this.writeArray(value, this.writeUint16.bind(this));
+        this.writeUint32Array = value => this.writeArray(value, this.writeUint32.bind(this));
+        this.writeBigUint64Array = value => this.writeArray(value, this.writeBigUint64.bind(this));
+        this.writeFloat32Array = value => this.writeArray(value, this.writeFloat32.bind(this));
+        this.writeFloat64Array = value => this.writeArray(value, this.writeFloat64.bind(this));
+        this.writeStringArray = value => this.writeArray(value, this.writeString.bind(this));
     }
 
     bind(arrayBuffer) {

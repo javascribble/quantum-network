@@ -8,17 +8,17 @@ export class ByteReader {
         this.#decoder = decoder;
 
         this.readBoolArray = () => this.readArray(this.readBool.bind(this));
-        this.readInt8 = () => this.readArray(this.readInt8.bind(this));
-        this.readInt16 = () => this.readArray(this.readInt16.bind(this));
-        this.readInt32 = () => this.readArray(this.readInt32.bind(this));
-        this.readBigInt64 = () => this.readArray(this.readBigInt64.bind(this));
-        this.readUint8 = () => this.readArray(this.readUint8.bind(this));
-        this.readUint16 = () => this.readArray(this.readUint16.bind(this));
-        this.readUint32 = () => this.readArray(this.readUint32.bind(this));
-        this.readBigUint64 = () => this.readArray(this.readBigUint64.bind(this));
-        this.readFloat32 = () => this.readArray(this.readFloat32.bind(this));
-        this.readFloat64 = () => this.readArray(this.readFloat64.bind(this));
-        this.readString = () => this.readArray(this.readString.bind(this));
+        this.readInt8Array = () => this.readArray(this.readInt8.bind(this));
+        this.readInt16Array = () => this.readArray(this.readInt16.bind(this));
+        this.readInt32Array = () => this.readArray(this.readInt32.bind(this));
+        this.readBigInt64Array = () => this.readArray(this.readBigInt64.bind(this));
+        this.readUint8Array = () => this.readArray(this.readUint8.bind(this));
+        this.readUint16Array = () => this.readArray(this.readUint16.bind(this));
+        this.readUint32Array = () => this.readArray(this.readUint32.bind(this));
+        this.readBigUint64Array = () => this.readArray(this.readBigUint64.bind(this));
+        this.readFloat32Array = () => this.readArray(this.readFloat32.bind(this));
+        this.readFloat64Array = () => this.readArray(this.readFloat64.bind(this));
+        this.readStringArray = () => this.readArray(this.readString.bind(this));
     }
 
     bind(arrayBuffer) {
