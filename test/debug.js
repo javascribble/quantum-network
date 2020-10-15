@@ -1,5 +1,5 @@
-import '/node_modules/@javascribble/quantum/source/main.js';
-import { ByteWriter, ByteReader } from '/source/main.js';
+import '/node_modules/@javascribble/quantum/source/global.js';
+import { ByteWriter, ByteReader } from '/source/global.js';
 
 document.body.style.visibility = 'visible';
 
