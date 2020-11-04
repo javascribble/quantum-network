@@ -1,6 +1,7 @@
+import { Component, define } from '../import.js';
 import { Socket } from '../utilities/socket.js';
 
-export class Network extends quantum.Component {
+export class Network extends Component {
     constructor() {
         super();
 
@@ -8,9 +9,9 @@ export class Network extends quantum.Component {
         //addEventListener('offline', offline);
     }
 
-    integrate(api) {
+    adapt(api) {
         api.socket = Socket;
     }
 }
 
-quantum.define('quantum-network', Network);
+define('quantum-network', Network);
