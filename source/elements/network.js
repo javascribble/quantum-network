@@ -1,4 +1,3 @@
-import { Component, define } from '../import.js';
 import { Socket } from '../utilities/socket.js';
 
 export class Network extends Component {

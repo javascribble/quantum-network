@@ -1,4 +1,3 @@
-export * from './elements/network.js';
-export * from './utilities/reader.js';
-export * from './utilities/socket.js';
-export * from './utilities/writer.js';
+import * as network from './elements/network.js';
+
+Object.assign(quantum, network);
