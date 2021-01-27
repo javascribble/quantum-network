@@ -1,5 +1,7 @@
 import { Socket } from '../utilities/socket.js';
 
+const { Component, template, define } = quantum;
+
 export class Network extends Component {
     constructor() {
         super();
