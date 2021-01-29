@@ -1,8 +1,6 @@
 import { Socket } from '../utilities/socket.js';
 
-const { Component, template, define } = quantum;
-
-export class Network extends Component {
+export class Network extends Quantum {
     constructor() {
         super();
 
@@ -15,4 +13,4 @@ export class Network extends Component {
     }
 }
 
-define('quantum-network', Network);
+Network.define('quantum-network', html);
