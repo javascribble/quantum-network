@@ -1,3 +1,1 @@
-import { Network } from './elements/network.js';
-
-Quantum.Network = Network;
+import './elements/network.js';
