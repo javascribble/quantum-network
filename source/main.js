@@ -1,1 +1,3 @@
-import './elements/network.js';
+import { Network } from './elements/network.js';
+
+Network.define('quantum-network');
