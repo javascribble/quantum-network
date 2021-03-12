@@ -7,9 +7,11 @@
         "@javascribble/quantum": "^1.2.8"
     },
     "devDependencies": {
+        "@javascribble/rollup-quantum-build": "^1.1.1",
         "live-server": "*"
     },
     "scripts": {
+        "build": "node ./node_modules/@javascribble/rollup-quantum-build/source/main.js ./source/main.js ./build",
         "start": "live-server --open=/test/debug.html",
         "postversion": "npm publish --access public"
     },
@@ -28,7 +30,7 @@
         "quantum"
     ],
     "files": [
-        "bundle",
+        "build",
         "source"
     ]
 }
