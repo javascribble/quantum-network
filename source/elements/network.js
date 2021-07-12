@@ -12,3 +12,5 @@ export class Network extends Quantum {
         api.socket = Socket;
     }
 }
+
+Network.define('quantum-network');
