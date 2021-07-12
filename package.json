@@ -12,7 +12,7 @@
     "scripts": {
         "build": "cd ../rollup-quantum-build && npm start ../quantum-network",
         "start": "live-server --open=/test/debug.html",
-        "postversion": "npm publish --access public"
+        "postversion": "npm run build && npm publish --access public"
     },
     "main": "./bundles/main.js",
     "homepage": "https://github.com/javascribble/quantum-network#readme",
